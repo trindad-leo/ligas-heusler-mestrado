@@ -45,16 +45,15 @@
 </div>
 
 <div class="summary-box">
-    <h2>Visão Geral do Fluxo Experimental</h2>
+    <h2>Visão Geral do Fluxo Experimental (Atualizado)</h2>
     <ol>
         <li>Cálculo Estequiométrico e Pesagem</li>
         <li>Síntese (Fusão em Forno de Arco Voltaico)</li>
-        <li>Caracterização Estrutural Preliminar (DRX/MEV/EDS)</li>
         <li>Tratamento Térmico I (Homogeneização da Liga)</li>
-        <li>Caracterização Estrutural Final (DRX/MEV/EDS)</li>
+        <li>Divisão da Amostra e Caracterização "Fria" (DRX/MEV/EDS/SQUID)</li>
         <li>Difusão do Probe Radioativo (InCl₃ ou HfF₄)</li>
         <li>Tratamento Térmico II (Fixação do Probe e Quenching)</li>
-        <li>Medidas PAC e Caracterização Magnética</li>
+        <li>Espectroscopia PAC</li>
     </ol>
 </div>
 
@@ -94,119 +93,99 @@
 </details>
 
 <details>
-    <summary>3. Caracterização Preliminar (DRX / MEV / EDS)</summary>
-    <div class="content">
-        <ul>
-            <li><strong>Difração de Raios X (DRX)</strong>
-                <span class="note">Equipamento: Difratômetro Rigaku SmartLab (IPEN). Objetivo: Verificar a formação preliminar das fases e se houve segregação macroscópica de elementos antes do tratamento térmico.</span>
-            </li>
-            <li><strong>MEV e EDS</strong>
-                <span class="note">Análise morfológica e mapeamento elementar para confirmar a homogeneidade da composição estequiométrica (1:1:1 ou proporções da L2₁) ao longo da superfície e em eventuais fraturas do botão.</span>
-            </li>
-        </ul>
-    </div>
-</details>
-
-<details>
-    <summary>4. Tratamento Térmico I (Homogeneização e Ordenamento)</summary>
+    <summary>3. Tratamento Térmico I (Homogeneização da Liga)</summary>
     <div class="content">
         <ul>
             <li><strong>Preparação do Tubo</strong>
                 <span class="note">A amostra fundida é encapsulada em tubo de quartzo. Selagem sob vácuo ou atmosfera inerte controlada.</span>
             </li>
-            <li><strong>Recozimento (Annealing)</strong>
-                <span class="note">Procedimento no forno tubular para garantir a formação e ordenamento da fase cúbica L2₁. (Nota: Inserir aqui as temperaturas e tempos específicos utilizados para as ligas puras assim que definidos).</span>
+            <li><strong>Recozimento (Annealing) Padrão</strong>
+                <span class="note">Procedimento no forno tubular para garantir a formação primária e homogeneização da fase cúbica L2₁. Embora a fase Heusler já dê sinais de formação logo após a fusão, esta etapa é <strong>mantida para garantir o rigor experimental e padronização</strong> do histórico térmico de todas as amostras, conforme orienta a literatura.</span>
             </li>
         </ul>
     </div>
 </details>
 
 <details>
-    <summary>5. Caracterização Estrutural Final (DRX / Rietveld)</summary>
+    <summary>4. Divisão da Amostra e Caracterização "Fria"</summary>
     <div class="content">
         <ul>
-            <li><strong>Confirmação da Fase L2₁</strong>
-                <span class="note">Nova medida de DRX no Rigaku SmartLab após o tratamento térmico I. Os picos de superestrutura (como (111) e (200)) devem estar mais bem definidos, indicando a redução de desordem antissítio.</span>
+            <li><strong>Estratégia de Corte</strong>
+                <span class="note">A "bolinha" fundida (aprox. 0,5g) é clivada/cortada em três partes. A <strong>parte do meio</strong> é separada para toda a caracterização macroscópica e estrutural ("fria", sem radioatividade). As <strong>duas metades das pontas</strong> são reservadas para a posterior difusão da sonda PAC (método do sanduíche).</span>
             </li>
-            <li><strong>Refinamento Rietveld</strong>
-                <span class="note">Uso do software GSAS II. Ajuste da função pseudo-Voigt para determinar com precisão os parâmetros de rede, posições atômicas e quantificar as frações de fase e graus de desordem estrutural.</span>
+            <li><strong>Difração de Raios X (DRX)</strong>
+                <span class="note">Realizada na fração central da amostra. Verificação da fase L2₁ e refinamento Rietveld. Como a amostra após a inserção do probe não poderá ser levada ao difratômetro por restrições de radioproteção, este será o DRX definitivo da liga.</span>
+            </li>
+            <li><strong>MEV e EDS</strong>
+                <span class="note">Análise morfológica e mapeamento elementar para confirmar a homogeneidade estequiométrica na <strong>proporção 2:1:1</strong> (típica das ligas Full-Heusler X₂MnZ), ao longo da superfície e fraturas.</span>
+            </li>
+            <li><strong>Medidas Macroscópicas (SQUID/VSM)</strong>
+                <span class="note">Caracterização magnética (M x T, ZFC-FC, M x H) realizada na mesma fração central, evitando a manipulação de material radioativo nestes equipamentos externos.</span>
             </li>
         </ul>
     </div>
 </details>
 
 <details>
-    <summary>6. Difusão do Probe Radioativo</summary>
+    <summary>5. Difusão do Probe Radioativo</summary>
     <div class="content">
         <ul>
             <li><strong>Natureza das Sondas</strong>
-                <span class="note">Utiliza-se Isótopos na forma de sais em solução: Cloreto de Índio (¹¹¹InCl₃) ou Tetrafluoreto de Háfnio (¹⁸¹HfF₄).</span>
+                <span class="note">Utiliza-se isótopos na forma de sais em solução: Cloreto de Índio (¹¹¹InCl₃) ou Tetrafluoreto de Háfnio (¹⁸¹HfF₄).</span>
             </li>
-            <li><strong>Método do "Sanduíche" (Recomendado)</strong>
-                <span class="note">A liga é clivada/cortada em duas partes. A solução contendo o probe é gotejada na face interna das duas partes. Após leve secagem, as metades são sobrepostas com essas faces se encontrando (formando um sanduíche) para garantir que a difusão ocorra de dentro para fora, minimizando perdas para o ambiente.</span>
-            </li>
-            <li><strong>Método Alternativo: Refusão</strong>
-                <span class="note">Pingar o probe, secar e refundir no forno de arco. <span class="highlight">Atenção:</span> Alto risco de perda do probe por evaporação devido às extremas temperaturas e volatilidade dos cloretos/fluoretos.</span>
+            <li><strong>Método do "Sanduíche"</strong>
+                <span class="note">Utilizando as duas metades das pontas da amostra cortada (ver etapa 4). A solução contendo o probe é gotejada na face interna das duas partes. Após leve secagem, as metades são sobrepostas com essas faces se encontrando (formando um sanduíche) para garantir que a difusão ocorra de dentro para fora, minimizando perdas para o ambiente.</span>
             </li>
         </ul>
     </div>
 </details>
 
 <details>
-    <summary>7. Tratamento Térmico II (Fixação do Probe e Quenching)</summary>
+    <summary>6. Tratamento Térmico II (Fixação do Probe e Quenching)</summary>
     <div class="content">
         <ul>
             <li><strong>Encapsulamento com H₂</strong>
-                <span class="note">A amostra "sanduíche" é selada em tubo de quartzo contendo gás Hidrogênio (H₂). <span class="highlight">Justificativa:</span> A pressão do gás ajuda a manter o probe no interior do material e a atmosfera redutora previne qualquer oxidação da amostra.</span>
+                <span class="note">A amostra "sanduíche" é selada em tubo de quartzo contendo gás Hidrogênio (H₂). A pressão do gás ajuda a manter o probe no interior do material e a atmosfera redutora previne qualquer oxidação da amostra.</span>
             </li>
             <li><strong>Protocolo de Rampas e Quenching</strong>
-                <span class="note">Aquecimento controlado (taxa de 2 °C/min) no forno tubular para gerenciar a evaporação dos solventes e sublimação dos sais antes da difusão efetiva, finalizando com choque térmico (quenching) em água ambiente.</span>
+                <span class="note">Aquecimento controlado (taxa de 2 °C/min) no forno tubular.</span>
                 <table class="param-table">
                     <tr>
                         <th>Etapa</th>
-                        <th>Alvo (Temp)</th>
                         <th>¹¹¹In (via InCl₃)</th>
                         <th>¹⁸¹Hf (via HfF₄)</th>
                     </tr>
                     <tr>
-                        <td>1. Secagem</td>
-                        <td>150 °C</td>
-                        <td>Evaporação lenta do solvente (água/ácido).</td>
-                        <td>Evaporação lenta do solvente.</td>
+                        <td><strong>1. Secagem (150 °C)</strong></td>
+                        <td>Patamar: <strong>1 hora</strong> (Evaporação lenta do solvente).</td>
+                        <td>Patamar: <strong>1 hora</strong> (Evaporação lenta do solvente).</td>
                     </tr>
                     <tr>
-                        <td>2. Sublimação</td>
-                        <td>Intermediária</td>
-                        <td><strong>550 °C:</strong> Decomposição/Sublimação do InCl₃.</td>
-                        <td><strong>350 °C:</strong> Sublimação do HfF₄ (~312 °C).</td>
+                        <td><strong>2. Sublimação</strong></td>
+                        <td><strong>550 °C</strong> (Patamar: <strong>5 horas</strong>) - Decomposição do InCl₃.</td>
+                        <td><strong>350 °C</strong> (Patamar: <strong>5 horas</strong>) - Sublimação do HfF₄.</td>
                     </tr>
                     <tr>
-                        <td>3. Ordenamento</td>
-                        <td>800 °C</td>
-                        <td>Alta mobilidade e ocupação de sítio do In.</td>
-                        <td>Difusão profunda do Hf na rede L2₁.</td>
+                        <td><strong>3. Ordenamento (800 °C)</strong></td>
+                        <td>Patamar: <strong>12 horas</strong> (Alta mobilidade e difusão do In).</td>
+                        <td>Patamar: <strong>12 horas</strong> (Difusão profunda do Hf na rede L2₁).</td>
                     </tr>
                     <tr>
-                        <td>4. Quenching</td>
-                        <td>T. Ambiente</td>
-                        <td colspan="2">Resfriamento instantâneo em água para "congelar" a fase ordenada L2₁.</td>
+                        <td><strong>4. Quenching</strong></td>
+                        <td colspan="2">Resfriamento instantâneo (Temp. Ambiente) em água para "congelar" a fase ordenada L2₁.</td>
                     </tr>
                 </table>
-                <span class="note"><em>*Tempos de permanência (patamar) em cada temperatura a serem definidos com o Prof. Artur.</em></span>
             </li>
         </ul>
     </div>
 </details>
 
 <details>
-    <summary>8. Medidas de Caracterização Magnética e PAC</summary>
+    <summary>7. Espectroscopia PAC</summary>
     <div class="content">
         <ul>
-            <li><strong>Medidas Macroscópicas (SQUID/VSM)</strong>
-                <span class="note">Caracterização no IFUSP. Obtenção de curvas de Magnetização x Temperatura (M x T, ZFC-FC) para determinação da Temperatura de Curie (Tc), e curvas de Histerese (M x H) para verificar o comportamento ferromagnético e momento magnético de saturação.</span>
-            </li>
-            <li><strong>Espectroscopia PAC</strong>
-                <span class="note">Posicionamento da amostra radioativa no centro do espectrômetro (arranjos de detectores BaF₂). Medição das coincidências gama-gama (cascatas de decaimento do ¹¹¹In ou ¹⁸¹Hf). Obtenção do espectro de anisotropia temporal R(t) para extração das frequências de Larmor e determinação do Campo Hiperfino Magnético (MHF) nos sítios da rede.</span>
+            <li><strong>Medida de Interações Hiperfinas</strong>
+                <span class="note">Posicionamento da amostra radioativa (o "sanduíche") no centro do espectrômetro (arranjos de detectores BaF₂). Medição das coincidências gama-gama. Obtenção do espectro de anisotropia temporal R(t) para extração das frequências de Larmor e determinação do Campo Hiperfino Magnético (MHF) nos sítios da rede.</span>
             </li>
         </ul>
     </div>
