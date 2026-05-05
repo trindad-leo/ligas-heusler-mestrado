@@ -21,7 +21,7 @@
     .content { padding: 20px; background: #fafafa; border-left: 4px solid #3498db; }
     
     /* Estilo para os links de detalhes no topo de cada seção */
-    .detail-link { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: #e8f4f8; color: #2980b9; text-decoration: none; border-radius: 4px; font-weight: bold; border-left: 4px solid #3498db; transition: background-color 0.3s; }
+    .detail-link { display: inline-block; margin-bottom: 15px; margin-right: 10px; padding: 10px 15px; background-color: #e8f4f8; color: #2980b9; text-decoration: none; border-radius: 4px; font-weight: bold; border-left: 4px solid #3498db; transition: background-color 0.3s; }
     .detail-link:hover { background-color: #d4eaf5; }
     
     ul { list-style-type: none; padding-left: 0; margin: 0; }
@@ -72,7 +72,7 @@
             <li><strong>2.4. A Técnica de Correlação Angular Perturbada (PAC):</strong>
                 <span class="note bullet-item">Fundamentos físicos da interação hiperfina (interação elétrica e magnética).</span>
                 <span class="note bullet-item">A cascata gama-gama e a anisotropia da emissão.</span>
-                <span class="note bullet-item">Sondas utilizadas (¹¹¹In/¹¹¹Cd).</span>
+                <span class="note bullet-item">Sondas utilizadas (¹¹¹In/¹¹¹Cd e ¹⁸¹Hf/¹⁸¹Ta).</span>
             </li>
         </ul>
     </div>
@@ -83,20 +83,21 @@
     <div class="content">
         <a href="procedimentos.html" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Procedimentos Experimentais</a>
         <ul>
-            <li><strong>3.1. Preparação das Amostras:</strong>
-                <span class="note bullet-item">Estequiometria e pesagem (compensação de perdas de Mn).</span>
-                <span class="note bullet-item">Fusão em Forno a Arco Voltaico (atmosfera de argônio).</span>
-                <span class="note bullet-item">Tratamento Térmico (Protocolos de homogeneização e recozimento utilizados).</span>
+            <li><strong>3.1. Síntese e Preparação das Amostras:</strong>
+                <span class="note bullet-item">Estequiometria, pesagem e compensação de perdas de Mn.</span>
+                <span class="note bullet-item">Fusão em Forno a Arco Voltaico e Tratamentos Térmicos.</span>
             </li>
-            <li><strong>3.2. Caracterização Estrutural (DRX):</strong>
-                <span class="note bullet-item">Equipamento e condições de medida.</span>
-                <span class="note bullet-item">Método de Refinamento Rietveld (Software GSAS II).</span>
+            <li><strong>3.2. Caracterização Estrutural e Morfológica (Metodologia):</strong>
+                <span class="note bullet-item">Difração de Raios X (DRX) e Método de Refinamento Rietveld.</span>
+                <span class="note bullet-item">Microscopia Eletrônica de Varredura (MEV) e Espectroscopia de Energia Dispersiva (EDS).</span>
             </li>
-            <li><strong>3.3. Caracterização Magnética Macroscópica:</strong> Medidas de magnetização (Magnetômetro SQUID).</li>
-            <li><strong>3.4. Medidas Hiperfinas (PAC):</strong>
-                <span class="note bullet-item">Processo de difusão das sondas radioativas (evaporação térmica/fusão).</span>
-                <span class="note bullet-item">Descrição do Espectrômetro PAC (detectores BaF₂, eletrônica básica).</span>
-                <span class="note bullet-item">Protocolo de aquisição em temperatura (criostato/forno).</span>
+            <li><strong>3.3. Caracterização Magnética e Óptica (Metodologia):</strong> 
+                <span class="note bullet-item">Medidas magnéticas macroscópicas via Magnetômetro (SQUID/VSM).</span>
+                <span class="note bullet-item">Mapeamento óptico de campo próximo via SNOM (Scanning Near-field Optical Microscopy).</span>
+            </li>
+            <li><strong>3.4. Medidas Hiperfinas (Metodologia PAC):</strong>
+                <span class="note bullet-item">Processo de difusão das sondas radioativas (método do sanduíche).</span>
+                <span class="note bullet-item">Descrição do Espectrômetro PAC e protocolo de aquisição.</span>
             </li>
         </ul>
     </div>
@@ -106,15 +107,19 @@
     <summary>Capítulo 4: Resultados Experimentais</summary>
     <div class="content">
         <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Resultados Experimentais (em breve)</a>
-        <ul>
         <a href="https://drive.google.com/drive/folders/1THXAivsI6cekeZgpNDL0iiBGeiozxwH7?usp=sharing" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Medidas</a>
         <ul>
-            <li><strong>4.1. Análise Estrutural:</strong> Apresentação dos difratogramas de Raios-X e tabelas com parâmetros de rede obtidos via Rietveld.</li>
-            <li><strong>4.2. Resultados das Medidas Magnéticas (Macroscópicas):</strong> Curvas de histerese ou MxT (se houver).</li>
-            <li><strong>4.3. Resultados de PAC:</strong>
+            <li><strong>4.1. Análise Estrutural e Morfológica:</strong> 
+                <span class="note bullet-item">Apresentação dos difratogramas (DRX), tabelas com parâmetros de rede obtidos via Rietveld.</span>
+                <span class="note bullet-item">Imagens de morfologia da superfície (MEV) e comprovação da estequiometria local (mapas de EDS).</span>
+            </li>
+            <li><strong>4.2. Resultados Magnéticos e Ópticos (SQUID e SNOM):</strong> 
+                <span class="note bullet-item">Curvas de histerese (M x H) e curvas de Magnetização por Temperatura (M x T).</span>
+                <span class="note bullet-item">Análise topográfica e magnética em escala nanométrica obtida pelo SNOM.</span>
+            </li>
+            <li><strong>4.3. Resultados de Interações Hiperfinas (PAC):</strong>
                 <span class="note bullet-item">Espectros R(t) experimentais e seus respectivos ajustes.</span>
                 <span class="note bullet-item">Tabelas e Gráficos com os valores de campos hiperfinos (B_hf), frequências e frações de sítios para cada liga.</span>
-                <span class="note bullet-item">Apresentação do comportamento do campo em função da temperatura (se medido).</span>
             </li>
         </ul>
     </div>
@@ -125,12 +130,12 @@
     <div class="content">
         <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Discussão e Análise (em breve)</a>
         <ul>
-            <li><strong>5.1. Qualidade das Amostras:</strong> Discussão sobre a fase L2₁ pura vs. desordem atômica (baseado no DRX e nas frações do PAC).</li>
+            <li><strong>5.1. Qualidade e Estrutura das Amostras:</strong> Discussão integrada sobre a pureza da fase L2₁ vs. desordem atômica (cruzando dados do DRX, MEV/EDS e frações de sítios do PAC).</li>
             <li><strong>5.2. Comportamento do Campo Hiperfino nas Ligas X₂MnZ:</strong>
                 <span class="note bullet-item">Comparação sistemática: Efeito da troca de X (Co vs. Fe) e da troca de Z (Al, Si, Ga, Ge, In, Sn) no valor do campo.</span>
-                <span class="note bullet-item">Comparação com a regra de Slater-Pauling (o campo segue o momento magnético total?).</span>
+                <span class="note bullet-item">Comparação macro vs micro: O campo local (PAC) acompanha o momento magnético total (SQUID/Regra de Slater-Pauling)?</span>
             </li>
-            <li><strong>5.3. Interpretação dos Mecanismos:</strong> Discussão sobre a origem do campo (contribuição dos vizinhos locais vs. elétrons de condução), conectando com a teoria do Cap. 2, fazendo uma comparação com a literatura e como os resultados conversam com os dados prévios.</li>
+            <li><strong>5.3. Interpretação dos Mecanismos:</strong> Discussão sobre a origem do campo (contribuição dos vizinhos locais vs. elétrons de condução), conectando com a teoria e comparando os resultados locais (PAC) com o mapeamento superficial (SNOM) e a literatura.</li>
         </ul>
     </div>
 </details>
