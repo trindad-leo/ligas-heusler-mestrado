@@ -50,7 +50,8 @@
         <li>Cálculo Estequiométrico e Pesagem</li>
         <li>Síntese (Fusão em Forno de Arco Voltaico)</li>
         <li>Tratamento Térmico I (Homogeneização da Liga)</li>
-        <li>Divisão da Amostra e Caracterização "Fria" (DRX/MEV/EDS/SQUID)</li>
+        <li>Preparação Metalográfica (Embutimento, Corte e Polimento)</li>
+        <li>Caracterização "Fria" (DRX/MEV/EDS/SQUID)</li>
         <li>Difusão do Probe Radioativo (InCl₃ ou HfF₄)</li>
         <li>Tratamento Térmico II (Fixação do Probe e Quenching)</li>
         <li>Espectroscopia PAC</li>
@@ -107,17 +108,40 @@
 </details>
 
 <details>
-    <summary>4. Divisão da Amostra e Caracterização "Fria"</summary>
+    <summary>4. Preparação Metalográfica (Embutimento, Corte e Polimento)</summary>
     <div class="content">
         <ul>
-            <li><strong>Estratégia de Corte</strong>
-                <span class="note">A "bolinha" fundida (aprox. 0,5g) é clivada/cortada em três partes. A <strong>parte do meio</strong> é separada para toda a caracterização macroscópica e estrutural ("fria", sem radioatividade). As <strong>duas metades das pontas</strong> são reservadas para a posterior difusão da sonda PAC (método do sanduíche).</span>
+            <li><strong>Embutimento a Frio (Macete do Canudo)</strong>
+                <span class="note">Para facilitar o manuseio das amostras de 0,5g, a "bolinha" fundida é encapsulada. Prepara-se uma mistura de resina acrílica na proporção de <strong>3 partes de pó para 2 partes de líquido</strong> (para maior transparência). Utiliza-se um canudo de plástico como molde, inserindo a mistura e a amostra com um palito de madeira. Após a cura, o plástico é cortado, restando um cilindro rígido e transparente contendo a amostra.</span>
             </li>
+            <li><strong>Corte da Amostra</strong>
+                <span class="note">O cilindro de resina serve como suporte firme para fatiar a amostra na serra do laboratório, dividindo-a nas frações necessárias (meio para caracterização fria, pontas para difusão PAC).</span>
+            </li>
+            <li><strong>Lixamento Progressivo</strong>
+                <span class="note">Inicia-se o desbaste com lixa d'água de granulação <strong>400</strong>, avançando para <strong>800</strong> e, idealmente, finalizando com a lixa <strong>1200</strong>. O objetivo é criar uma base perfeitamente plana e remover as marcas do disco de corte.</span>
+            </li>
+            <li><strong>Polimento em Suspensão</strong>
+                <span class="note">Realizado em politriz utilizando suspensões abrasivas (diamante ou alumina) em etapas decrescentes: <strong>9 µm, 6 µm e 3 µm</strong>. Cada etapa sucessiva remove os microriscos deixados pela etapa anterior, otimizando gradativamente a reflexividade.</span>
+            </li>
+            <li><strong>Avaliação e Controle de Qualidade (Microscopia)</strong>
+                <span class="note">A amostra é avaliada no microscópio (ou na ótica do durômetro). Foca-se a superfície e avalia-se o brilho <em>antes do ponto focal</em>. Um "reflexo claro e gigante" indica que o polimento espelhado foi atingido e a amostra está pronta para o MEV/EDS.</span>
+            </li>
+            <li><strong>Ajustes e Reprocessamento</strong>
+                <span class="note">Caso a avaliação aponte riscos residuais ou falta de brilho, o processo deve retroceder. Retorna-se para o polimento fino (suspensões de 3 µm ou 1 µm) ou lixamento fino para corrigir as falhas sem desperdício da amostra.</span>
+            </li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>5. Caracterização "Fria" (Pós-Polimento)</summary>
+    <div class="content">
+        <ul>
             <li><strong>Difração de Raios X (DRX)</strong>
-                <span class="note">Realizada na fração central da amostra. Verificação da fase L2₁ e refinamento Rietveld. Como a amostra após a inserção do probe não poderá ser levada ao difratômetro por restrições de radioproteção, este será o DRX definitivo da liga.</span>
+                <span class="note">Realizada na fração central polida. Verificação da fase L2₁ e refinamento Rietveld. Como a amostra após a inserção do probe não poderá ser levada ao difratômetro por restrições de radioproteção, este será o DRX definitivo da liga.</span>
             </li>
             <li><strong>MEV e EDS</strong>
-                <span class="note">Análise morfológica e mapeamento elementar para confirmar a homogeneidade estequiométrica na <strong>proporção 2:1:1</strong> (típica das ligas Full-Heusler X₂MnZ), ao longo da superfície e fraturas.</span>
+                <span class="note">A superfície espelhada é analisada para morfologia e mapeamento elementar, confirmando a homogeneidade estequiométrica na <strong>proporção 2:1:1</strong> (típica das ligas Full-Heusler X₂MnZ).</span>
             </li>
             <li><strong>Medidas Macroscópicas (SQUID/VSM)</strong>
                 <span class="note">Caracterização magnética (M x T, ZFC-FC, M x H) realizada na mesma fração central, evitando a manipulação de material radioativo nestes equipamentos externos.</span>
@@ -127,21 +151,21 @@
 </details>
 
 <details>
-    <summary>5. Difusão do Probe Radioativo</summary>
+    <summary>6. Difusão do Probe Radioativo</summary>
     <div class="content">
         <ul>
             <li><strong>Natureza das Sondas</strong>
                 <span class="note">Utiliza-se isótopos na forma de sais em solução: Cloreto de Índio (¹¹¹InCl₃) ou Tetrafluoreto de Háfnio (¹⁸¹HfF₄).</span>
             </li>
             <li><strong>Método do "Sanduíche"</strong>
-                <span class="note">Utilizando as duas metades das pontas da amostra cortada (ver etapa 4). A solução contendo o probe é gotejada na face interna das duas partes. Após leve secagem, as metades são sobrepostas com essas faces se encontrando (formando um sanduíche) para garantir que a difusão ocorra de dentro para fora, minimizando perdas para o ambiente.</span>
+                <span class="note">Utilizando as duas metades das pontas da amostra cortada. A solução contendo o probe é gotejada na face interna das duas partes. Após leve secagem, as metades são sobrepostas com essas faces se encontrando (formando um sanduíche) para garantir que a difusão ocorra de dentro para fora, minimizando perdas para o ambiente.</span>
             </li>
         </ul>
     </div>
 </details>
 
 <details>
-    <summary>6. Tratamento Térmico II (Fixação do Probe e Quenching)</summary>
+    <summary>7. Tratamento Térmico II (Fixação do Probe e Quenching)</summary>
     <div class="content">
         <ul>
             <li><strong>Encapsulamento com H₂</strong>
@@ -181,7 +205,7 @@
 </details>
 
 <details>
-    <summary>7. Espectroscopia PAC</summary>
+    <summary>8. Espectroscopia PAC</summary>
     <div class="content">
         <ul>
             <li><strong>Medida de Interações Hiperfinas</strong>
