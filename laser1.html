@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligas de Heusler: Arquitetura Atômica e Spintrônica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Harmonia Mineral (Fundo neutro quente, acentos índigo e esmeralda suaves) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfaf7;
+            color: #2d2d2d;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+
+        .scroll-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .scroll-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .atom-badge {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 border-b border-stone-200 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">H</div>
+                    <span class="font-bold text-xl text-stone-800 hidden sm:block">Ligas de Heusler</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="showSection('intro')" class="nav-link text-sm font-medium text-stone-500 hover:text-indigo-600 active" id="nav-intro">Visão Geral</button>
+                    <button onclick="showSection('historia')" class="nav-link text-sm font-medium text-stone-500 hover:text-indigo-600" id="nav-historia">História</button>
+                    <button onclick="showSection('fisica')" class="nav-link text-sm font-medium text-stone-500 hover:text-indigo-600" id="nav-fisica">Slater-Pauling</button>
+                    <button onclick="showSection('aplicacoes')" class="nav-link text-sm font-medium text-stone-500 hover:text-indigo-600" id="nav-aplicacoes">Aplicações</button>
+                </div>
+                <div class="md:hidden text-stone-500 text-sm italic">FAPESP 2026</div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+        <!-- INTRO SECTION -->
+        <section id="intro" class="scroll-section active space-y-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-extrabold text-stone-900 tracking-tight mb-4">O Fenômeno das Ligas de Heusler</h1>
+                <p class="text-lg text-stone-600 leading-relaxed">
+                    Descobertas por Conrad Heusler em 1903, estas ligas desafiaram a física clássica da época: como um composto de elementos não magnéticos (Cu, Mn, Al) poderia ser fortemente ferromagnético? Hoje, elas são a base da spintrônica e de novas tecnologias de refrigeração sólida, graças à sua propriedade de <strong>meia-metalicidade</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-stone-100 bg-white">
+                    <h3 class="text-indigo-600 font-semibold mb-2">Composição</h3>
+                    <p class="text-sm text-stone-600">Estruturas ordenadas de tipo FCC com estequiometrias variadas (Full: X₂YZ, Half: XYZ).</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-stone-100 bg-white">
+                    <h3 class="text-emerald-600 font-semibold mb-2">Ponto Crucial</h3>
+                    <p class="text-sm text-stone-600">Apresentam um gap de energia apenas na banda de spin minoritário, permitindo 100% de polarização de spin.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-stone-100 bg-white">
+                    <h3 class="text-amber-600 font-semibold mb-2">Aplicações</h3>
+                    <p class="text-sm text-stone-600">Filtros de spin, sensores magnéticos, refrigeração magnética e isolantes topológicos.</p>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50 rounded-3xl p-8 border border-indigo-100">
+                <h2 class="text-2xl font-bold text-indigo-900 mb-6">Explosão de Interesse Acadêmico</h2>
+                <p class="text-stone-700 mb-6 italic">Abaixo, observamos o crescimento exponencial de publicações desde a descoberta da meia-metalicidade por de Groot em 1983.</p>
+                <div class="chart-container">
+                    <canvas id="pubChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTORIA SECTION -->
+        <section id="historia" class="scroll-section space-y-8">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Uma Linhagem de Descobertas</h2>
+                <p class="text-stone-600 mb-8 leading-relaxed">
+                    A história destas ligas é marcada por três gerações da família Heusler (Conrad, Friedrich e Otto). O que começou como uma busca por novos bronzes industriais tornou-se o estudo de interações magnéticas complexas.
+                </p>
+            </div>
+
+            <div class="relative border-l-2 border-stone-200 ml-4 space-y-12 pb-8">
+                <div class="relative pl-10">
+                    <div class="absolute -left-2.5 top-0 w-5 h-5 bg-indigo-600 rounded-full border-4 border-white"></div>
+                    <span class="text-xs font-bold text-indigo-500 uppercase tracking-wider">1881-1898</span>
+                    <h4 class="text-lg font-bold text-stone-800">A Origem Industrial</h4>
+                    <p class="text-stone-600 text-sm">Conrad Heusler substitui fósforo por manganês para reduzir óxidos em bronzes. Friedrich descobre acidentalmente que a liga Cu-Mn-Sn atrai imãs.</p>
+                </div>
+                <div class="relative pl-10">
+                    <div class="absolute -left-2.5 top-0 w-5 h-5 bg-stone-400 rounded-full border-4 border-white"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">1928-1934</span>
+                    <h4 class="text-lg font-bold text-stone-800">Ordenamento Atômico</h4>
+                    <p class="text-stone-600 text-sm">Persson e Otto Heusler provam via raios-X que o magnetismo vem de uma fase beta (BCC) ordenada. Bradley define a posição exata dos átomos na célula unitária.</p>
+                </div>
+                <div class="relative pl-10">
+                    <div class="absolute -left-2.5 top-0 w-5 h-5 bg-emerald-600 rounded-full border-4 border-white"></div>
+                    <span class="text-xs font-bold text-emerald-500 uppercase tracking-wider">1983</span>
+                    <h4 class="text-lg font-bold text-stone-800">Revolução da Meia-Metalicidade</h4>
+                    <p class="text-stone-600 text-sm">R.A. de Groot prevê o comportamento de "Half-Metal" em NiMnSb, iniciando a era moderna da spintrônica.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-3xl shadow-sm border border-stone-100">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">A Estrutura L2₁ (Full-Heusler)</h3>
+                    <p class="text-sm text-stone-600 mb-4">Consiste em quatro sub-redes FCC interpenetradas. A ocupação ordenada é o que define o momento magnético total.</p>
+                    <div class="structure-grid">
+                        <div class="atom-badge bg-indigo-100 text-indigo-700">X em (0,0,0)</div>
+                        <div class="atom-badge bg-emerald-100 text-emerald-700">Y em (¼,¼,¼)</div>
+                        <div class="atom-badge bg-amber-100 text-amber-700">Z em (¾,¾,¾)</div>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center h-48 bg-stone-50 rounded-2xl border-2 border-dashed border-stone-200">
+                    <div class="text-center text-stone-400 text-sm px-8">
+                        Visualização da Célula Unitária<br>(X₂YZ)
+                        <div class="mt-4 flex justify-center space-x-2">
+                            <div class="w-6 h-6 rounded-full bg-indigo-500"></div>
+                            <div class="w-4 h-4 rounded-full bg-emerald-500"></div>
+                            <div class="w-4 h-4 rounded-full bg-amber-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FISICA SECTION -->
+        <section id="fisica" class="scroll-section space-y-8">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">O Regramento de Slater-Pauling</h2>
+                <p class="text-stone-600 mb-8 leading-relaxed">
+                    Nas ligas de Heusler de base Co, Fe e Mn, o momento magnético total segue uma regra linear baseada no número de elétrons de valência. Isso permite o design computacional de novos materiais com propriedades magnéticas sob medida.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200">
+                    <h3 class="text-lg font-bold mb-6">Regra para Full-Heusler: Mt = Zt - 24</h3>
+                    <p class="text-sm text-stone-600 mb-6">Onde <strong>Mt</strong> é o momento magnético total por célula unitária e <strong>Zt</strong> é o número total de elétrons de valência.</p>
+                    <div class="chart-container">
+                        <canvas id="slaterChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-indigo-500">
+                        <h4 class="font-bold text-stone-800">Por que 24?</h4>
+                        <p class="text-sm text-stone-600">Este valor indica que existem exatamente 12 elétrons ocupando a banda de spin minoritário (down). A hibridização Co-Co e Co-Mn estabiliza esse estado, criando o pseudogap.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-emerald-500">
+                        <h4 class="font-bold text-stone-800">Controle de Elétrons</h4>
+                        <p class="text-sm text-stone-600">Substituir um átomo <strong>Z</strong> (ex: Al por Si) altera o número de elétrons d e, consequentemente, o magnetismo total da liga.</p>
+                    </div>
+                    <div class="p-6 bg-stone-800 text-white rounded-2xl">
+                        <h4 class="font-semibold text-amber-400 mb-2">Exemplos de Mt:</h4>
+                        <ul class="text-xs space-y-2 opacity-90">
+                            <li>• <strong>Co₂MnAl</strong> (Zt=28) → Mt ≈ 4.0 μB</li>
+                            <li>• <strong>Co₂MnSi</strong> (Zt=29) → Mt ≈ 5.0 μB</li>
+                            <li>• <strong>Fe₂VAl</strong> (Zt=24) → Mt ≈ 0.0 (Semimetal)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APLICACOES SECTION -->
+        <section id="aplicacoes" class="scroll-section space-y-8">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Funcionalidades e Futuro</h2>
+                <p class="text-stone-600 mb-8 leading-relaxed">
+                    Além do magnetismo puro, as ligas de Heusler apresentam efeitos multicalóricos e de memória de forma, essenciais para a próxima geração de tecnologias verdes e computação quântica.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group p-8 bg-white border border-stone-200 rounded-3xl hover:border-indigo-300 transition-all cursor-default">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-4">Spintrônica e GMR</h3>
+                    <p class="text-sm text-stone-600">Uso de filmes finos de ligas de Heusler em válvulas de spin para aumentar o efeito de Magnetorresistência Gigante, permitindo discos rígidos de maior densidade e memórias MRAM mais rápidas.</p>
+                </div>
+                <div class="group p-8 bg-white border border-stone-200 rounded-3xl hover:border-emerald-300 transition-all cursor-default">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-4">Refrigeração Sólida</h3>
+                    <p class="text-sm text-stone-600">Efeitos magnetocalóricos e inversos que permitem a criação de refrigeradores sem gases poluentes, baseados na mudança de entropia durante transições de fase martensíticas induzidas por campo magnético.</p>
+                </div>
+                <div class="group p-8 bg-white border border-stone-200 rounded-3xl hover:border-amber-300 transition-all cursor-default">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-4">Memória de Forma Magnética</h3>
+                    <p class="text-sm text-stone-600">Materiais que mudam de forma mecanicamente sob a influência de um campo magnético externo, permitindo a criação de atuadores e sensores de alta precisão.</p>
+                </div>
+                <div class="group p-8 bg-white border border-stone-200 rounded-3xl hover:border-purple-300 transition-all cursor-default">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 text-2xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-4">Isolantes Topológicos</h3>
+                    <p class="text-sm text-stone-600">Ligas específicas (como certas Half-Heuslers) que possuem estados de superfície protegidos por simetria, ideais para o transporte eletrônico sem dissipação em computadores quânticos.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 p-10 bg-stone-900 rounded-[3rem] text-white flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <h2 class="text-3xl font-bold mb-4">Pronto para a Próxima Fronteira?</h2>
+                    <p class="text-stone-400">O design de novas ligas agora utiliza Machine Learning e cálculos de alto desempenho para prever estabilidade e propriedades antes mesmo da síntese laboratorial.</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <button onclick="showSection('fisica')" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-full font-bold transition-colors">Explorar Dados de Valência</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-stone-200 mt-20 py-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-stone-500 text-sm">&copy; 2026 - Ligas de Heusler: Arquitetura Atômica & Spintrônica</p>
+            <p class="text-stone-400 text-xs mt-2 italic">Baseado nos relatórios de Galanakis, Dederichs, Tavares, Yang & Meyers.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Placeholder Application Structure Plan:
+        // A aplicação foi desenhada em seções temáticas (Intro, História, Física de Slater-Pauling, Aplicações) 
+        // para facilitar a digestão de conceitos complexos. 
+        // O fluxo inicia com a curiosidade histórica, explica a estrutura atômica e então mergulha na análise quantitativa 
+        // (Slater-Pauling), finalizando com a aplicação tecnológica. 
+        // A navegação dinâmica oculta/exibe seções para manter o foco do usuário.
+
+        // Placeholder Visualization & Content Choices:
+        // 1. Chart 1 (pubChart): Linha do tempo de publicações -> Informar crescimento -> Gráfico de Linha (Chart.js).
+        // 2. Chart 2 (slaterChart): Relação Mt vs Zt -> Comparar comportamento Slater-Pauling -> Gráfico de Dispersão com Linha de Tendência.
+        // 3. Grid de Estrutura: Badge systems para explicar Wyckoff coordinates sem excesso de texto técnico.
+        // Confirmamos o uso exclusivo de Canvas para gráficos e Tailwind para layout. SEM SVG ou Mermaid.
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.scroll-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('nav-' + sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Charts Initialization
+        window.onload = function() {
+            // Chart 1: Growth of publications
+            const ctx1 = document.getElementById('pubChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['1980', '1985', '1990', '1995', '2000', '2005', '2010', '2015', '2020'],
+                    datasets: [{
+                        label: 'Número de Publicações (Estimado)',
+                        data: [20, 45, 80, 110, 220, 350, 480, 550, 600],
+                        borderColor: '#4f46e5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#4f46e5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f3f4f6' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Chart 2: Slater-Pauling Behavior
+            const ctx2 = document.getElementById('slaterChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Mt = Zt - 24',
+                        data: [
+                            {x: 22, y: -2},
+                            {x: 23, y: -1},
+                            {x: 24, y: 0},
+                            {x: 25, y: 1},
+                            {x: 26, y: 2},
+                            {x: 27, y: 3},
+                            {x: 28, y: 4},
+                            {x: 29, y: 5}
+                        ],
+                        showLine: true,
+                        borderColor: '#10b981',
+                        borderDash: [5, 5],
+                        backgroundColor: 'transparent',
+                        pointRadius: 0
+                    }, {
+                        label: 'Ligas Reais',
+                        data: [
+                            {x: 22, y: -2.0, label: 'Mn2VAl'},
+                            {x: 24, y: 0.1, label: 'Fe2VAl'},
+                            {x: 27, y: 2.9, label: 'Co2CrAl'},
+                            {x: 28, y: 3.97, label: 'Co2MnAl'},
+                            {x: 29, y: 4.94, label: 'Co2MnSi'}
+                        ],
+                        backgroundColor: '#4f46e5',
+                        pointRadius: 8,
+                        pointHoverRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { 
+                            title: { display: true, text: 'Elétrons de Valência (Zt)', color: '#6b7280' },
+                            grid: { color: '#f3f4f6' }
+                        },
+                        y: { 
+                            title: { display: true, text: 'Momento Total (Mt)', color: '#6b7280' },
+                            grid: { color: '#f3f4f6' }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if(context.datasetIndex === 1) {
+                                        return context.raw.label + ': ' + context.raw.y + ' μB';
+                                    }
+                                    return 'Regra Teórica';
+                                }
+                            }
+                        },
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
