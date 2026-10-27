@@ -4,8 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #ecf0f1; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #ecf0f1; position: relative; }
     
+    /* Estilos do botão de Relógio */
+    .version-toggle { position: absolute; top: 20px; right: 20px; font-size: 26px; cursor: pointer; background: #fff; border: 1px solid #bdc3c7; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+    .version-toggle:hover { background: #ecf0f1; transform: scale(1.1); }
+    .tooltip { position: relative; display: inline-block; }
+    .tooltip .tooltiptext { visibility: hidden; width: 120px; background-color: #34495e; color: #fff; text-align: center; border-radius: 6px; padding: 5px; position: absolute; z-index: 1; top: 110%; left: 50%; margin-left: -60px; font-size: 12px; opacity: 0; transition: opacity 0.3s; font-weight: normal; }
+    .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+    
+    .hidden { display: none; }
+    .badge-nova { display: inline-block; background: #27ae60; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; margin-bottom: 10px; font-weight: bold; }
+    .badge-antiga { display: inline-block; background: #7f8c8d; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; margin-bottom: 10px; font-weight: bold; }
+
+    /* Estrutura Original */
     .header { text-align: center; margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid #2980b9; }
     .header h1 { color: #2c3e50; font-size: 1.8em; margin-bottom: 15px; text-transform: uppercase; }
     .header h3 { color: #555; margin: 5px 0; font-weight: normal; font-size: 1.2em; }
@@ -20,7 +32,6 @@
     
     .content { padding: 20px; background: #fafafa; border-left: 4px solid #3498db; }
     
-    /* Estilo para os links de detalhes no topo de cada seção */
     .detail-link { display: inline-block; margin-bottom: 15px; margin-right: 10px; padding: 10px 15px; background-color: #e8f4f8; color: #2980b9; text-decoration: none; border-radius: 4px; font-weight: bold; border-left: 4px solid #3498db; transition: background-color 0.3s; }
     .detail-link:hover { background-color: #d4eaf5; }
     
@@ -30,142 +41,161 @@
     
     .note { font-size: 0.95em; color: #666; display: block; margin-top: 6px; padding-left: 12px; border-left: 2px solid #bdc3c7; }
     .bullet-item { display: list-item; list-style-type: disc; margin-left: 25px; margin-top: 5px; color: #555; }
+    
+    .banca-alert { color: #c0392b; font-weight: bold; border-left: 2px solid #c0392b; }
 </style>
 </head>
 <body>
 
-<div class="header">
-    <h2>Campo Hiperfino Magnético em ligas de Heusler X₂MnZ, X=Co, Fe e Z=Al, Ga, In, Ge, Si</h2>
-    <h3><strong>Autor:</strong> Leonardo Trindade</h3>
-    <h3><strong>Orientador:</strong> Prof. Dr. Artur Wilson Carbonari</h3>
+<div class="version-toggle tooltip" onclick="toggleVersion()">
+    🕒
+    <span class="tooltiptext" id="tooltipText">Ver versão anterior</span>
 </div>
 
-<details>
-    <summary>Capítulo 1: Introdução</summary>
-    <div class="content">
-        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Introdução (em breve)</a><br>
-        <a href="https://heusler-alloy-lab.lovable.app/" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Ferramenta: HeuslerLab Panel</a>
-        <ul>
-            <li><strong>1.1. Contextualização e Motivação:</strong> Breve panorama sobre materiais magnéticos avançados, spintrônica e a busca por novos materiais. Apresentação inicial e sucinta das ligas de Heusler, do magnetismo na matéria e da utilidade da técnica PAC para a investigação proposta.</li>
-            <li><strong>1.2. Objetivos:</strong>
-                <span class="note bullet-item">Objetivo Geral: Medir experimentalmente o Campo Hiperfino Magnético (MHF) nas ligas Heusler X₂MnZ utilizando espectroscopia PAC.</span>
-                <span class="note bullet-item">Objetivos Específicos: Compreender mecanismos de interação eletrônica e a sistemática do MHF; sintetizar as ligas Heusler e caracterizar sua estrutura cristalina e propriedades magnéticas.</span>
-            </li>
-            <li><strong>1.3. Estrutura da Dissertação:</strong> Breve descrição do que contém cada capítulo a seguir.</li>
-        </ul>
+<!-- ======================= NOVA VERSÃO (PÓS-QUALIFICAÇÃO) ======================= -->
+<div id="versao-nova">
+    <div class="header">
+        <span class="badge-nova">Versão Atualizada (Diretrizes da Banca)</span>
+        <h2>Campo Hiperfino Magnético em ligas de Heusler Co₂MnZ, com Z=Al, Ge, Si</h2>
+        <h3><strong>Autor:</strong> Leonardo Trindade</h3>
+        <h3><strong>Orientador:</strong> Prof. Dr. Artur Wilson Carbonari</h3>
     </div>
-</details>
 
-<details>
-    <summary>Capítulo 2: Fundamentação Teórica</summary>
-    <div class="content">
-        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Fundamentação Teórica (em breve)</a>
-        <ul>
-            <li><strong>2.1. O Magnetismo na Matéria:</strong> Aprofundamento nos conceitos fundamentais, origem do momento magnético e ferromagnetismo.</li>
-            <li><strong>2.2. Ligas de Heusler X₂MnZ:</strong>
-                <span class="note bullet-item">Estrutura Cristalina L2₁ e ocupação dos sítios.</span>
-                <span class="note bullet-item">Propriedades Magnéticas: Regra de Slater-Pauling e o comportamento ferromagnético.</span>
-            </li>
-            <li><strong>2.3. O Campo Hiperfino Magnético (MHF):</strong>
-                <span class="note bullet-item">Mecanismos de transferência de campo (Contato de Fermi, Polarização de Caroço).</span>
-                <span class="note bullet-item">Modelos teóricos simplificados.</span>
-            </li>
-            <li><strong>2.4. A Técnica de Correlação Angular Perturbada (PAC):</strong>
-                <span class="note bullet-item">Fundamentos físicos da interação hiperfina (interação elétrica e magnética).</span>
-                <span class="note bullet-item">A cascata gama-gama e a anisotropia da emissão.</span>
-                <span class="note bullet-item">Sondas utilizadas (¹¹¹In/¹¹¹Cd e ¹⁸¹Hf/¹⁸¹Ta).</span>
-            </li>
-        </ul>
+    <details>
+        <summary>Capítulo 1: Introdução</summary>
+        <div class="content">
+            <a href="#" class="detail-link" target="_blank">➜ Detalhes: Introdução (em breve)</a><br>
+            <ul>
+                <li><strong>Ajustes de Texto Recomendados:</strong>
+                    <span class="note bullet-item banca-alert">Ajeitar o Abstract e a Introdução.</span>
+                    <span class="note bullet-item banca-alert">Diminuir o uso de superlativos, garantir que todas as figuras sejam referenciadas no corpo do texto e evitar equações "in-line".</span>
+                </li>
+                <li><strong>1.1. Contextualização e Motivação:</strong> Breve panorama sobre materiais magnéticos avançados, spintrônica e a busca por novos materiais. Apresentação das ligas de Heusler de Co, do magnetismo na matéria e da técnica PAC.</li>
+                <li><strong>1.2. Objetivos:</strong>
+                    <span class="note bullet-item">Objetivo Geral: Medir experimentalmente o Campo Hiperfino Magnético (MHF) nas ligas Heusler Co₂MnGe, Co₂MnAl e Co₂MnSi utilizando espectroscopia PAC.</span>
+                    <span class="note bullet-item">Objetivos Específicos: Concentrar em preparar as amostras mais rapidamente, caracterizar a estrutura cristalina (foco reduzido de técnicas) e extrair informações hiperfinas.</span>
+                </li>
+                <li><strong>1.3. Estrutura da Dissertação:</strong> Breve descrição do conteúdo de cada capítulo.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Capítulo 2: Fundamentação Teórica</summary>
+        <div class="content">
+            <ul>
+                <li><strong>2.1. O Magnetismo na Matéria:</strong> Origem do momento magnético e ferromagnetismo.</li>
+                <li><strong>2.2. Ligas de Heusler Co₂MnZ:</strong>
+                    <span class="note bullet-item">Estrutura Cristalina L2₁ e ocupação dos sítios.</span>
+                    <span class="note bullet-item">Propriedades Magnéticas: Regra de Slater-Pauling.</span>
+                </li>
+                <li><strong>2.3. O Campo Hiperfino Magnético (MHF):</strong> Contato de Fermi e Polarização de Caroço.</li>
+                <li><strong>2.4. A Técnica de Correlação Angular Perturbada (TDPAC):</strong>
+                    <span class="note bullet-item banca-alert">Explicar melhor a técnica (conforme pedido pela banca): detalhar a cascata gama-gama, o padrão de emissão, e o decaimento exponencial modulado.</span>
+                    <span class="note bullet-item banca-alert">Explicar a eletrônica associada e o funcionamento básico dos equipamentos.</span>
+                    <span class="note bullet-item">Sondas utilizadas (¹¹¹In/¹¹¹Cd).</span>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Capítulo 3: Procedimentos Experimentais</summary>
+        <div class="content">
+            <ul>
+                <li><strong>3.1. Síntese e Preparação das Amostras:</strong>
+                    <span class="note bullet-item">Estequiometria e compensação de perdas de Mn (+5%).</span>
+                    <span class="note bullet-item">Fusão em Forno a Arco Voltaico e preparo rápido das ligas selecionadas.</span>
+                </li>
+                <li><strong>3.2. Caracterização Estrutural (Foco Metodológico):</strong>
+                    <span class="note bullet-item">Difração de Raios X (DRX) e Método de Refinamento Rietveld.</span>
+                </li>
+                <li><strong>3.3. Medidas Hiperfinas (Metodologia PAC):</strong>
+                    <span class="note bullet-item">Processo de difusão das sondas radioativas.</span>
+                    <span class="note bullet-item banca-alert">Mencionar os programas utilizados para a aquisição e tratamento dos dados.</span>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Capítulo 4: Resultados Experimentais</summary>
+        <div class="content">
+            <a href="https://drive.google.com/drive/folders/1THXAivsI6cekeZgpNDL0iiBGeiozxwH7?usp=sharing" class="detail-link" target="_blank">➜ Detalhes: Medidas</a>
+            <ul>
+                <li><strong>4.1. Análise Estrutural (DRX):</strong> 
+                    <span class="note bullet-item">Apresentação dos difratogramas (DRX) e parâmetros de rede via Rietveld.</span>
+                    <span class="note bullet-item banca-alert">Verificar se a fase correta foi obtida no refinamento Rietveld e realizar a comparação com a literatura (Pedido Banca).</span>
+                </li>
+                <li><strong>4.2. Resultados de Interações Hiperfinas (PAC):</strong>
+                    <span class="note bullet-item">Espectros R(t) experimentais e seus respectivos ajustes para Co₂MnGe, Co₂MnAl e Co₂MnSi.</span>
+                    <span class="note bullet-item banca-alert">Ajustar a incerteza do resultado TDPAC e explorar melhor/detalhar profundamente cada resultado obtido.</span>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Capítulo 5: Discussão e Análise</summary>
+        <div class="content">
+            <ul>
+                <li><strong>5.1. Estrutura vs. Ordem Atômica:</strong> Discussão integrada sobre a pureza da fase L2₁.</li>
+                <li><strong>5.2. Comportamento do Campo Hiperfino nas Ligas Co₂MnZ:</strong>
+                    <span class="note bullet-item">Efeito da troca do elemento Z (Ge, Al, Si) no valor do campo magnético.</span>
+                    <span class="note bullet-item">O campo local (PAC) e o acompanhamento da Regra de Slater-Pauling.</span>
+                </li>
+                <li><strong>5.3. Interpretação dos Mecanismos:</strong> Origem do campo (elétrons de condução vs. momentos locais).</li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Capítulo 6: Conclusões e Perspectivas</summary>
+        <div class="content">
+            <ul>
+                <li><strong>Conclusões Gerais:</strong><br><span class="note">Resumo dos achados focados nas 3 ligas de Co. Avaliação da fase L2₁ e da sistemática do CHM.</span></li>
+                <li><strong>Perspectivas:</strong><br><span class="note">Sugestões baseadas nas limitações deste escopo restrito.</span></li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+<!-- ======================= VERSÃO ANTERIOR (BACKUP) ======================= -->
+<div id="versao-antiga" class="hidden">
+    <div class="header">
+        <span class="badge-antiga">Versão Anterior (Original)</span>
+        <h2>Campo Hiperfino Magnético em ligas de Heusler X₂MnZ, X=Co, Fe e Z=Al, Ga, In, Ge, Si</h2>
+        <h3><strong>Autor:</strong> Leonardo Trindade</h3>
+        <h3><strong>Orientador:</strong> Prof. Dr. Artur Wilson Carbonari</h3>
     </div>
-</details>
+    
+    <details>    <summary>Capítulo 1: Introdução</summary>    <div class="content">        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Introdução (em breve)</a><br>        <a href="https://heusler-alloy-lab.lovable.app/" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Ferramenta: HeuslerLab Panel</a>        <ul>            <li><strong>1.1. Contextualização e Motivação:</strong> Breve panorama sobre materiais magnéticos avançados, spintrônica e a busca por novos materiais. Apresentação inicial e sucinta das ligas de Heusler, do magnetismo na matéria e da utilidade da técnica PAC para a investigação proposta.</li>            <li><strong>1.2. Objetivos:</strong>                <span class="note bullet-item">Objetivo Geral: Medir experimentalmente o Campo Hiperfino Magnético (MHF) nas ligas Heusler X₂MnZ utilizando espectroscopia PAC.</span>                <span class="note bullet-item">Objetivos Específicos: Compreender mecanismos de interação eletrônica e a sistemática do MHF; sintetizar as ligas Heusler e caracterizar sua estrutura cristalina e propriedades magnéticas.</span>            </li>            <li><strong>1.3. Estrutura da Dissertação:</strong> Breve descrição do que contém cada capítulo a seguir.</li>        </ul>    </div></details>
+    <details>    <summary>Capítulo 2: Fundamentação Teórica</summary>    <div class="content">        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Fundamentação Teórica (em breve)</a>        <ul>            <li><strong>2.1. O Magnetismo na Matéria:</strong> Aprofundamento nos conceitos fundamentais, origem do momento magnético e ferromagnetismo.</li>            <li><strong>2.2. Ligas de Heusler X₂MnZ:</strong>                <span class="note bullet-item">Estrutura Cristalina L2₁ e ocupação dos sítios.</span>                <span class="note bullet-item">Propriedades Magnéticas: Regra de Slater-Pauling e o comportamento ferromagnético.</span>            </li>            <li><strong>2.3. O Campo Hiperfino Magnético (MHF):</strong>                <span class="note bullet-item">Mecanismos de transferência de campo (Contato de Fermi, Polarização de Caroço).</span>                <span class="note bullet-item">Modelos teóricos simplificados.</span>            </li>            <li><strong>2.4. A Técnica de Correlação Angular Perturbada (PAC):</strong>                <span class="note bullet-item">Fundamentos físicos da interação hiperfina (interação elétrica e magnética).</span>                <span class="note bullet-item">A cascata gama-gama e a anisotropia da emissão.</span>                <span class="note bullet-item">Sondas utilizadas (¹¹¹In/¹¹¹Cd e ¹⁸¹Hf/¹⁸¹Ta).</span>            </li>        </ul>    </div></details>
+    <details>    <summary>Capítulo 3: Procedimentos Experimentais</summary>    <div class="content">        <a href="procedimentos.html" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Procedimentos Experimentais</a>        <ul>            <li><strong>3.1. Síntese e Preparação das Amostras:</strong>                <span class="note bullet-item">Estequiometria, pesagem e compensação de perdas de Mn.</span>                <span class="note bullet-item">Fusão em Forno a Arco Voltaico e Tratamentos Térmicos.</span>            </li>            <li><strong>3.2. Caracterização Estrutural e Morfológica (Metodologia):</strong>                <span class="note bullet-item">Difração de Raios X (DRX) e Método de Refinamento Rietveld.</span>                <span class="note bullet-item">Microscopia Eletrônica de Varredura (MEV) e Espectroscopia de Energia Dispersiva (EDS).</span>            </li>            <li><strong>3.3. Caracterização Magnética e Microscópica (Metodologia):</strong>                 <span class="note bullet-item">Medidas magnéticas macroscópicas via Magnetômetro (SQUID/VSM).</span>                <span class="note bullet-item">Mapeamento de domínios magnéticos em escala nanométrica via MFM (Microscopia de Força Magnética - Plataforma SNOM).</span>            </li>            <li><strong>3.4. Medidas Hiperfinas (Metodologia PAC):</strong>                <span class="note bullet-item">Processo de difusão das sondas radioativas.</span>                <span class="note bullet-item">Descrição do Espectrômetro PAC e protocolo de aquisição.</span>            </li>        </ul>    </div></details>
+    <details>    <summary>Capítulo 4: Resultados Experimentais</summary>    <div class="content">        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Resultados Experimentais (em breve)</a><br>        <a href="https://drive.google.com/drive/folders/1THXAivsI6cekeZgpNDL0iiBGeiozxwH7?usp=sharing" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Medidas</a>        <ul>            <li><strong>4.1. Análise Estrutural e Morfológica:</strong>                 <span class="note bullet-item">Apresentação dos difratogramas (DRX), tabelas com parâmetros de rede obtidos via Rietveld.</span>                <span class="note bullet-item">Imagens de morfologia da superfície (MEV) e comprovação da estequiometria local (mapas de EDS).</span>            </li>            <li><strong>4.2. Resultados Magnéticos Macroscópicos e Microscópicos (SQUID e MFM):</strong>                 <span class="note bullet-item">Curvas de histerese (M x H) e curvas de Magnetização por Temperatura (M x T) via SQUID.</span>                <span class="note bullet-item">Análise topográfica e evolução dos domínios magnéticos sob campo externo obtida pelo MFM (Projeto SNOM).</span>            </li>            <li><strong>4.3. Resultados de Interações Hiperfinas (PAC):</strong>                <span class="note bullet-item">Espectros R(t) experimentais e seus respectivos ajustes.</span>                <span class="note bullet-item">Tabelas e Gráficos com os valores de campos hiperfinos (B_hf), frequências e frações de sítios para cada liga.</span>            </li>        </ul>    </div></details>
+    <details>    <summary>Capítulo 5: Discussão e Análise</summary>    <div class="content">        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Discussão e Análise (em breve)</a>        <ul>            <li><strong>5.1. Qualidade e Estrutura das Amostras:</strong> Discussão integrada sobre a pureza da fase L2₁ vs. desordem atômica (cruzando dados do DRX, MEV/EDS e frações de sítios do PAC).</li>            <li><strong>5.2. Comportamento do Campo Hiperfino nas Ligas X₂MnZ:</strong>                <span class="note bullet-item">Comparação sistemática: Efeito da troca de X (Co vs. Fe) e da troca de Z (Al, Si, Ga, Ge, In, Sn) no valor do campo.</span>                <span class="note bullet-item">Comparação macro vs micro: O campo local (PAC) acompanha o momento magnético total (SQUID e Regra de Slater-Pauling)?</span>            </li>            <li><strong>5.3. Interpretação dos Mecanismos:</strong> Discussão sobre a origem do campo (contribuição dos vizinhos locais vs. elétrons de condução), conectando com a teoria e comparando os resultados locais (PAC) com a estrutura de domínios (MFM) e a literatura.</li>        </ul>    </div></details>
+    <details>    <summary>Capítulo 6: Conclusões e Perspectivas</summary>    <div class="content">        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Conclusões e Perspectivas (em breve)</a>        <ul>            <li>                <strong>Conclusões Gerais:</strong><br>                <span class="note">Resumo dos principais achados da pesquisa. Avaliação se as amostras foram bem produzidas e se atingiram a fase desejada. Análise do comportamento do campo hiperfino (aumentou ou diminuiu com Z?) e se os dados obtidos experimentalmente são explicados pelos modelos teóricos propostos.</span>            </li>            <li>                <strong>Perspectivas:</strong><br>                <span class="note">Sugestões de desdobramentos para trabalhos futuros baseados nas limitações ou descobertas deste trabalho (ex: investigar novas ligas, realizar cálculos DFT complementares, utilizar outras sondas radioativas).</span>            </li>        </ul>    </div></details>
+    <details>    <summary>Referências Bibliográficas</summary>    <div class="content">        <ul>            <li><span class="note">Lista de referências formatada conforme as normas exigidas (ABNT, APA, etc.).</span></li>        </ul>    </div></details>
+</div>
 
-<details>
-    <summary>Capítulo 3: Procedimentos Experimentais</summary>
-    <div class="content">
-        <a href="procedimentos.html" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Procedimentos Experimentais</a>
-        <ul>
-            <li><strong>3.1. Síntese e Preparação das Amostras:</strong>
-                <span class="note bullet-item">Estequiometria, pesagem e compensação de perdas de Mn.</span>
-                <span class="note bullet-item">Fusão em Forno a Arco Voltaico e Tratamentos Térmicos.</span>
-            </li>
-            <li><strong>3.2. Caracterização Estrutural e Morfológica (Metodologia):</strong>
-                <span class="note bullet-item">Difração de Raios X (DRX) e Método de Refinamento Rietveld.</span>
-                <span class="note bullet-item">Microscopia Eletrônica de Varredura (MEV) e Espectroscopia de Energia Dispersiva (EDS).</span>
-            </li>
-            <li><strong>3.3. Caracterização Magnética e Microscópica (Metodologia):</strong> 
-                <span class="note bullet-item">Medidas magnéticas macroscópicas via Magnetômetro (SQUID/VSM).</span>
-                <span class="note bullet-item">Mapeamento de domínios magnéticos em escala nanométrica via MFM (Microscopia de Força Magnética - Plataforma SNOM).</span>
-            </li>
-            <li><strong>3.4. Medidas Hiperfinas (Metodologia PAC):</strong>
-                <span class="note bullet-item">Processo de difusão das sondas radioativas.</span>
-                <span class="note bullet-item">Descrição do Espectrômetro PAC e protocolo de aquisição.</span>
-            </li>
-        </ul>
-    </div>
-</details>
-
-<details>
-    <summary>Capítulo 4: Resultados Experimentais</summary>
-    <div class="content">
-        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Resultados Experimentais (em breve)</a><br>
-        <a href="https://drive.google.com/drive/folders/1THXAivsI6cekeZgpNDL0iiBGeiozxwH7?usp=sharing" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Medidas</a>
-        <ul>
-            <li><strong>4.1. Análise Estrutural e Morfológica:</strong> 
-                <span class="note bullet-item">Apresentação dos difratogramas (DRX), tabelas com parâmetros de rede obtidos via Rietveld.</span>
-                <span class="note bullet-item">Imagens de morfologia da superfície (MEV) e comprovação da estequiometria local (mapas de EDS).</span>
-            </li>
-            <li><strong>4.2. Resultados Magnéticos Macroscópicos e Microscópicos (SQUID e MFM):</strong> 
-                <span class="note bullet-item">Curvas de histerese (M x H) e curvas de Magnetização por Temperatura (M x T) via SQUID.</span>
-                <span class="note bullet-item">Análise topográfica e evolução dos domínios magnéticos sob campo externo obtida pelo MFM (Projeto SNOM).</span>
-            </li>
-            <li><strong>4.3. Resultados de Interações Hiperfinas (PAC):</strong>
-                <span class="note bullet-item">Espectros R(t) experimentais e seus respectivos ajustes.</span>
-                <span class="note bullet-item">Tabelas e Gráficos com os valores de campos hiperfinos (B_hf), frequências e frações de sítios para cada liga.</span>
-            </li>
-        </ul>
-    </div>
-</details>
-
-<details>
-    <summary>Capítulo 5: Discussão e Análise</summary>
-    <div class="content">
-        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Discussão e Análise (em breve)</a>
-        <ul>
-            <li><strong>5.1. Qualidade e Estrutura das Amostras:</strong> Discussão integrada sobre a pureza da fase L2₁ vs. desordem atômica (cruzando dados do DRX, MEV/EDS e frações de sítios do PAC).</li>
-            <li><strong>5.2. Comportamento do Campo Hiperfino nas Ligas X₂MnZ:</strong>
-                <span class="note bullet-item">Comparação sistemática: Efeito da troca de X (Co vs. Fe) e da troca de Z (Al, Si, Ga, Ge, In, Sn) no valor do campo.</span>
-                <span class="note bullet-item">Comparação macro vs micro: O campo local (PAC) acompanha o momento magnético total (SQUID e Regra de Slater-Pauling)?</span>
-            </li>
-            <li><strong>5.3. Interpretação dos Mecanismos:</strong> Discussão sobre a origem do campo (contribuição dos vizinhos locais vs. elétrons de condução), conectando com a teoria e comparando os resultados locais (PAC) com a estrutura de domínios (MFM) e a literatura.</li>
-        </ul>
-    </div>
-</details>
-
-<details>
-    <summary>Capítulo 6: Conclusões e Perspectivas</summary>
-    <div class="content">
-        <a href="#" class="detail-link" target="_blank" rel="noopener noreferrer">➜ Detalhes: Conclusões e Perspectivas (em breve)</a>
-        <ul>
-            <li>
-                <strong>Conclusões Gerais:</strong><br>
-                <span class="note">Resumo dos principais achados da pesquisa. Avaliação se as amostras foram bem produzidas e se atingiram a fase desejada. Análise do comportamento do campo hiperfino (aumentou ou diminuiu com Z?) e se os dados obtidos experimentalmente são explicados pelos modelos teóricos propostos.</span>
-            </li>
-            <li>
-                <strong>Perspectivas:</strong><br>
-                <span class="note">Sugestões de desdobramentos para trabalhos futuros baseados nas limitações ou descobertas deste trabalho (ex: investigar novas ligas, realizar cálculos DFT complementares, utilizar outras sondas radioativas).</span>
-            </li>
-        </ul>
-    </div>
-</details>
-
-<details>
-    <summary>Referências Bibliográficas</summary>
-    <div class="content">
-        <ul>
-            <li><span class="note">Lista de referências formatada conforme as normas exigidas (ABNT, APA, etc.).</span></li>
-        </ul>
-    </div>
-</details>
-
+<script>
+    let mostrandoNova = true;
+    function toggleVersion() {
+        mostrandoNova = !mostrandoNova;
+        const versaoNova = document.getElementById('versao-nova');
+        const versaoAntiga = document.getElementById('versao-antiga');
+        const tooltip = document.getElementById('tooltipText');
+        
+        if(mostrandoNova) {
+            versaoNova.classList.remove('hidden');
+            versaoAntiga.classList.add('hidden');
+            tooltip.innerText = "Ver versão anterior";
+        } else {
+            versaoNova.classList.add('hidden');
+            versaoAntiga.classList.remove('hidden');
+            tooltip.innerText = "Ver versão atual";
+        }
+    }
+</script>
 </body>
 </html>
